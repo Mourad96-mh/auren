@@ -635,6 +635,38 @@ button { font: inherit; cursor: pointer; }
 }
 @media (max-width: 640px) { .situations, .svc-chapter-cols { grid-template-columns: 1fr; } }
 
+/* Projects: /projets/ case blocks + home cards */
+.pj + .pj { margin-top: clamp(72px, 9vw, 128px); }
+.pj-head { display: grid; grid-template-columns: 1fr auto; gap: var(--space-md) var(--gap-columns); align-items: end; margin-bottom: var(--space-lg); }
+.pj-head .h2 { margin: 0; }
+.pj-meta { display: flex; gap: var(--space-xl); margin: 0; }
+.pj-meta dt { font-size: var(--fs-label); letter-spacing: var(--tracking-label); text-transform: uppercase; font-weight: var(--fw-semibold); color: var(--muted); margin-bottom: 4px; }
+.pj-meta dd { margin: 0; color: var(--ink); font-size: var(--fs-sm); }
+.pj-gallery { display: grid; gap: var(--space-sm); }
+/* Row ratio = sum of its images' ratios; capped so a full-width render never exceeds ~62vh (crops slightly instead). */
+.pj-row { display: flex; gap: var(--space-sm); width: 100%; aspect-ratio: var(--r); max-height: 62vh; max-height: 62svh; min-height: 260px; }
+.pj-row .media { flex: var(--r) 1 0; min-width: 0; margin: 0; overflow: hidden; background: var(--bg-2); }
+.pj-row .media img { width: 100%; height: 100%; object-fit: cover; }
+.pj-foot { display: flex; justify-content: space-between; align-items: center; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-sm); font-size: var(--fs-xs); color: var(--muted); }
+@media (max-width: 820px) {
+  .pj-head { grid-template-columns: 1fr; }
+  .pj-meta { flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); }
+}
+@media (max-width: 700px) {
+  .pj-row { flex-direction: column; aspect-ratio: auto; max-height: none; min-height: 0; }
+  .pj-row .media { flex: none; aspect-ratio: var(--r); }
+}
+.pj-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl) var(--space-md); }
+.pj-card .media { display: block; aspect-ratio: 3 / 2; overflow: hidden; background: var(--bg-2); margin-bottom: var(--space-md); }
+.pj-card .media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
+.pj-card:hover .media img { transform: scale(1.05); }
+.pj-card-meta { font-size: var(--fs-label); letter-spacing: var(--tracking-label); text-transform: uppercase; font-weight: var(--fw-semibold); color: var(--accent-ink); margin: 0 0 8px; }
+.pj-card h3 { font-size: var(--fs-xl); margin: 0 0 6px; }
+.pj-card p:last-child { margin: 0; color: var(--muted); font-size: var(--fs-sm); }
+.pj-all { margin-top: var(--space-xl); }
+@media (max-width: 900px) { .pj-cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .pj-cards { grid-template-columns: 1fr; } }
+
 /* Studio page */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 50px var(--gap-columns); align-items: center; }
 .split .media { aspect-ratio: 3 / 2; overflow: hidden; }

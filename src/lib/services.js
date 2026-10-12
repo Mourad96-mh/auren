@@ -202,8 +202,19 @@ export const SERVICES = [
     num: '05',
     title: "Architecture d'intérieur et aménagement",
     short: 'Agencement des espaces, choix des matériaux et des finitions, pour des lieux fonctionnels et harmonieux.',
-    img: 'interieur',
-    imgAlt: "Salon aménagé par un architecte d'intérieur, lumière naturelle et mobilier épuré",
+    img: 'ai-salon',
+    imgAlt: "Perspective 3D d'un salon double hauteur : suspension à anneaux en laiton, cheminée en marbre noir, canapés en velours",
+    // Studio's own interior renders, laid out in justified rows by ProjectGallery.
+    gallery: {
+      imgs: [
+        { name: 'ai-chambre-marbre', alt: 'Suite parentale : tête de lit en marbre gris et filets laiton, tables de chevet en marbre noir' },
+        { name: 'ai-dressing', alt: 'Dressing sur mesure en noyer, éclairage LED intégré et parquet à bâtons rompus' },
+        { name: 'ai-chambre-beige', alt: 'Chambre aux panneaux capitonnés beige, dressing vitré et voilages sur baie vitrée' },
+        { name: 'ai-salle-jeux', alt: 'Salle de jeux et de détente : billard, mur TV en pierre et parquet en chevrons' },
+        { name: 'ai-couloir', alt: 'Couloir en marbre, habillage en noyer, console suspendue et éclairage indirect' },
+      ],
+      rows: [[0, 1, 2], [3, 4]],
+    },
     metaTitle: "Architecte d'intérieur à Casablanca | Auren Studio",
     metaDesc:
       "Architecte d'intérieur à Casablanca : aménagement d'appartements, villas, bureaux et commerces. Plans, 3D, matériaux, mobilier sur mesure et suivi des travaux.",

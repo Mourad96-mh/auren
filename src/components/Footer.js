@@ -34,7 +34,7 @@ export default function Footer() {
                 <Link href={`/guides/${g.slug}/`} prefetch={false}>{g.nav}</Link>
               </li>
             ))}
-            <li><Link href="/projets/" prefetch={false}>Types de projets</Link></li>
+            <li><Link href="/projets/" prefetch={false}>Projets</Link></li>
             <li><Link href="/le-studio/" prefetch={false}>Le studio</Link></li>
           </ul>
         </div>

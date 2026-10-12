@@ -24,6 +24,51 @@ export const PROCESS = [
   { k: 'Clés', d: 'Réception, levée des réserves et remise des clés.' },
 ];
 
+// Auren Studio's own projects (client brief file.txt). Images are the studio's 3D renders.
+// `rows` lays the gallery out as justified rows (image indexes); `type` points to the matching typology.
+export const PROJECTS = [
+  {
+    slug: 'villa-f-signature',
+    t: 'Villa F. Signature',
+    lieu: 'Témara',
+    annee: 2026,
+    programme: 'Villa contemporaine avec piscine',
+    type: 'villas',
+    rows: [[0], [1, 2]],
+    imgs: [
+      { name: 'villa-f-1', alt: 'Villa F. Signature à Témara : façade jardin, terrasse et piscine au coucher du soleil' },
+      { name: 'villa-f-2', alt: 'Villa F. Signature : façade latérale, mur en pierre veinée et bardage bois' },
+      { name: 'villa-f-3', alt: 'Villa F. Signature : façade d’entrée, porte pivot en bois et allée paysagée' },
+    ],
+  },
+  {
+    slug: 'villa-h-signature',
+    t: 'Villa H Signature',
+    lieu: 'Bouskoura',
+    annee: 2026,
+    programme: 'Villa contemporaine avec piscine',
+    type: 'villas',
+    rows: [[0, 1]],
+    imgs: [
+      { name: 'villa-h-1', alt: 'Villa H Signature à Bouskoura : façade sur rue, claustra bois, jardinières et carport' },
+      { name: 'villa-h-2', alt: 'Villa H Signature : façade jardin, terrasse en bois et piscine' },
+    ],
+  },
+  {
+    slug: 'laras-corner',
+    t: 'Lara’s Corner',
+    lieu: 'Dar Bouazza',
+    annee: 2026,
+    programme: 'Restaurant, café et boulangerie',
+    type: 'commerces',
+    rows: [[0, 1]],
+    imgs: [
+      { name: 'laras-corner-1', alt: 'Lara’s Corner à Dar Bouazza : façade du restaurant-café et de la boulangerie' },
+      { name: 'laras-corner-2', alt: 'Lara’s Corner : véranda vitrée, terrasse végétalisée et enseigne lumineuse' },
+    ],
+  },
+];
+
 // Typologies — illustrated with stock photography, NOT presented as Auren's own projects.
 export const TYPOLOGIES = [
   { slug: 'villas', t: 'Villas et maisons', d: 'Villas contemporaines, maisons familiales, villas avec piscine à Casablanca, Dar Bouazza ou Bouskoura.', img: 'villas' },

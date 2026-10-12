@@ -147,3 +147,27 @@ export function heroVideoLd() {
     publisher: { '@id': ORG_ID },
   };
 }
+
+// The studio's own projects, as a list of CreativeWork (design renders) on /projets/.
+export function projectsLd(projects) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Réalisations ${SITE.name}`,
+    itemListElement: projects.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'CreativeWork',
+        '@id': absUrl(`/projets/#${p.slug}`),
+        name: p.t,
+        url: absUrl(`/projets/#${p.slug}`),
+        description: `${p.programme}, ${p.lieu} (Maroc), ${p.annee}.`,
+        dateCreated: String(p.annee),
+        locationCreated: { '@type': 'Place', name: `${p.lieu}, Maroc` },
+        creator: { '@id': ORG_ID },
+        image: p.imgs.map((im) => absUrl(`/img/${im.name}-1600.webp`)),
+      },
+    })),
+  };
+}

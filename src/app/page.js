@@ -8,7 +8,7 @@ import JsonLd from '@/components/JsonLd';
 import { IconArrow, IconWhatsApp } from '@/components/Icons';
 import { SERVICES } from '@/lib/services';
 import { GUIDES } from '@/lib/guides';
-import { PILLARS, PROCESS, TYPOLOGIES, HOME_FAQ } from '@/lib/content';
+import { PILLARS, PROCESS, PROJECTS, TYPOLOGIES, HOME_FAQ } from '@/lib/content';
 import { SITE, ZONES, whatsappLink } from '@/lib/site';
 import { heroVideoLd, pageMeta } from '@/lib/seo';
 
@@ -153,6 +153,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ---------- Projets ---------- */}
+      <section className="section" aria-labelledby="projets-title">
+        <div className="container">
+          <div className="section-head reveal">
+            <div>
+              <p className="eyebrow">Nos projets</p>
+              <h2 id="projets-title" className="h2">Derniers projets du studio</h2>
+            </div>
+            <p>Deux villas contemporaines et un restaurant-café, de Témara à Dar Bouazza : des projets pensés avec leur site, leur lumière et leurs usages.</p>
+          </div>
+          <div className="pj-cards">
+            {PROJECTS.map((p, i) => (
+              <article key={p.slug} className={`pj-card reveal d${i + 1}`}>
+                <Link href={`/projets/#${p.slug}`} className="media" prefetch={false} tabIndex={-1} aria-hidden="true">
+                  <Img name={p.imgs[0].name} alt="" sizes="(max-width: 900px) 100vw, 33vw" />
+                </Link>
+                <p className="pj-card-meta">{p.lieu} · {p.annee}</p>
+                <h3>
+                  <Link href={`/projets/#${p.slug}`} prefetch={false}>{p.t}</Link>
+                </h3>
+                <p>{p.programme}</p>
+              </article>
+            ))}
+          </div>
+          <Link className="link-arrow pj-all" href="/projets/" prefetch={false}>
+            Voir tous les projets <IconArrow />
+          </Link>
+        </div>
+      </section>
+
       {/* ---------- Typologies ---------- */}
       <section className="section" aria-labelledby="typo-title">
         <div className="container">
@@ -177,7 +207,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <p className="typo-note">Photographies d’illustration. Nos réalisations seront présentées projet par projet.</p>
+          <p className="typo-note">Photographies d’illustration.</p>
         </div>
       </section>
 

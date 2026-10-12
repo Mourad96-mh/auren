@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Img from '@/components/Img';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Faq from '@/components/Faq';
+import ProjectGallery from '@/components/ProjectGallery';
 import CtaBand from '@/components/CtaBand';
 import JsonLd from '@/components/JsonLd';
 import { IconWhatsApp } from '@/components/Icons';
@@ -87,6 +88,21 @@ export default async function ServicePage({ params }) {
           </aside>
         </div>
       </section>
+
+      {s.gallery && (
+        <section className="section-sm" aria-labelledby="gallery-title" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <p className="eyebrow">Nos intérieurs</p>
+            <h2 id="gallery-title" className="h2" style={{ marginBottom: 40 }}>
+              Quelques ambiances dessinées par le studio
+            </h2>
+            <ProjectGallery project={s.gallery} />
+            <p className="pj-foot">
+              <span>Perspectives 3D</span>
+            </p>
+          </div>
+        </section>
+      )}
 
       <section className="section section-alt" aria-labelledby="steps-title">
         <div className="container">
