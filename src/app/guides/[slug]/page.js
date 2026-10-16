@@ -49,7 +49,7 @@ export default async function GuidePage({ params }) {
             Par Auren Studio, cabinet d’architecture à Casablanca · Publié le <time dateTime={g.published}>{fmt(g.published)}</time>
           </p>
           <div className="page-hero-media">
-            <Img name={g.img} alt="" sizes="100vw" priority />
+            <Img name={g.img} alt="" sizes="100vw" priority position={g.imgPos} />
           </div>
         </div>
       </section>

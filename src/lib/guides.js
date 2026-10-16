@@ -11,7 +11,8 @@ export const GUIDES = [
       "Combien coûte un architecte au Maroc ? Honoraires en pourcentage des travaux, ce qui fait varier le prix, missions incluses et conseils pour comparer les devis.",
     excerpt:
       'Pourcentage des travaux, mission complète ou partielle, ce qui fait varier le montant : comprendre les honoraires avant de demander un devis.',
-    img: 'studio-2',
+    img: 'guide-prix',
+    imgPos: 'center 100%', // 5:2 hero: keep the desk, not the blurred trees
     published: '2026-10-07',
     service: 'conception-architecturale',
     sections: [
@@ -77,7 +78,8 @@ export const GUIDES = [
       "Permis de construire à Casablanca : note de renseignement, plans d'architecte, dépôt sur Rokhas, commission, délais et permis d'habiter, pas à pas.",
     excerpt:
       'Note de renseignement, plans, dépôt sur Rokhas, commission, permis d’habiter : les étapes d’une autorisation de construire.',
-    img: 'chantier-2',
+    img: 'guide-permis',
+    imgPos: 'center 100%', // keep the worker's face and vest, not just the helmet
     published: '2026-10-07',
     service: 'plans-et-autorisations',
     sections: [
@@ -147,7 +149,8 @@ export const GUIDES = [
       "Construire une villa à Casablanca ou au Maroc : terrain, architecte, permis, chantier, budget, et conseils aux MRE qui font construire depuis l'étranger.",
     excerpt:
       'Du choix du terrain à la remise des clés, les étapes et les postes de budget, y compris quand on fait construire depuis l’étranger.',
-    img: 'maison',
+    img: 'guide-villa',
+    imgPos: 'center 35%', // upper floor and roof line
     published: '2026-10-07',
     service: 'conception-architecturale',
     sections: [

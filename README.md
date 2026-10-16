@@ -7,7 +7,8 @@ npm install
 npm run dev        # http://localhost:3000
 npm run build      # → out/  (on OneDrive: rm -rf .next before building)
 npm run media      # assets-src/*.jpg → public/img/*.webp (800 + 1600 px)
-npm run og         # public/og.jpg + public/logo.png
+npm run logo       # client logo → public/brand/wordmark.png, public/logo.png, src/app/icon.svg
+npm run og         # public/og.jpg (run logo first)
 node scripts/audit-meta.mjs       # title / description / H1 / canonical check on out/
 node scripts/validate-schema.mjs  # JSON-LD validation on out/
 ```

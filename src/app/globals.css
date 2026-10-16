@@ -188,14 +188,29 @@ button { font: inherit; cursor: pointer; }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); }
 .header-logo { display: inline-flex; }
 
-/* Logo: mark (SVG) + wordmark. The only sizes outside the scale (a logotype, not text). */
-.logo { display: inline-flex; align-items: center; gap: 14px; color: currentColor; }
-.logo-mark { flex: none; width: 34px; height: 34px; }
-.logo-text { display: flex; flex-direction: column; justify-content: center; gap: 5px; padding-left: 14px; border-left: 1px solid currentColor; border-left-color: color-mix(in srgb, currentColor 35%, transparent); line-height: 1; }
-.logo-name { font-family: var(--font-sans-stack); font-size: 1.0625rem; font-weight: 700; letter-spacing: 0.34em; margin-right: -0.34em; text-transform: uppercase; }
-.logo-sub { font-family: var(--font-sans-stack); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.72; }
-.logo-light { color: var(--on-dark); }
-@media (max-width: 380px) { .logo-sub { letter-spacing: 0.2em; } }
+/* Logo (client's official logo): gold SVG mark + AUREN wordmark (raster mask, coloured here)
+   + STUDIO between two rules. The only sizes outside the scale (a logotype, not text). */
+.logo { --logo-word: #6a4519; display: inline-flex; align-items: center; gap: 12px; color: var(--logo-word); }
+.site-header.is-clear .logo, .logo-light { --logo-word: var(--accent-pale); }
+.logo-mark { flex: none; width: 50px; height: 36px; }
+.logo-text { display: flex; flex-direction: column; align-items: center; gap: 6px; line-height: 1; }
+.logo-name {
+  display: block; width: 104px; aspect-ratio: 640 / 115; background: currentColor;
+  -webkit-mask: url(/brand/wordmark.png) center / contain no-repeat; mask: url(/brand/wordmark.png) center / contain no-repeat;
+}
+.logo-sub {
+  display: flex; align-items: center; gap: 7px;
+  font-family: var(--font-sans-stack); font-size: 0.5625rem; font-weight: 500; letter-spacing: 0.42em; margin-right: -0.42em; text-transform: uppercase;
+}
+.logo-sub::before, .logo-sub::after { content: ''; width: 12px; height: 1px; background: currentColor; opacity: 0.6; }
+.logo-sub::after { margin-left: -0.42em; }
+@media (min-width: 768px) {
+  .logo { gap: 14px; }
+  .logo-mark { width: 60px; height: 44px; }
+  .logo-name { width: 126px; }
+  .logo-sub { font-size: 0.625rem; gap: 9px; }
+  .logo-sub::before, .logo-sub::after { width: 16px; }
+}
 
 .main-nav { display: flex; align-items: center; gap: 34px; }
 .main-nav ul { list-style: none; display: flex; gap: 30px; }

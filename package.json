@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "media": "node scripts/make-media.mjs",
+    "logo": "node scripts/make-logo.mjs && node scripts/make-icon.mjs",
     "og": "node scripts/make-og.mjs"
   },
   "dependencies": {

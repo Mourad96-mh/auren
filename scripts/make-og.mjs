@@ -1,5 +1,7 @@
-// Generates public/og.jpg (1200x630 social card) and public/logo.png (raster logo for schema.org).
+// Generates public/og.jpg (1200x630 social card). Run `npm run logo` first (public/brand/wordmark.png);
+// public/logo.png now comes from the client's logo via scripts/make-logo.mjs.
 import sharp from 'sharp';
+import { markSvg } from './brand-mark.mjs';
 
 const W = 1200;
 const H = 630;
@@ -14,13 +16,10 @@ const overlay = `
     </linearGradient>
   </defs>
   <rect width="${W}" height="${H}" fill="url(#g)"/>
-  <g transform="translate(76 88) scale(1.4)" fill="none" stroke-width="2.4">
-    <path d="M7 36 20 4l13 32" stroke="#f4f1eb" stroke-miterlimit="10"/>
-    <path d="M11.4 25.2H38" stroke="#b08a5b"/>
-  </g>
-  <rect x="148" y="94" width="1" height="44" fill="#f4f1eb" fill-opacity="0.35"/>
-  <text x="166" y="117" font-family="Arial, sans-serif" font-weight="700" font-size="24" letter-spacing="8" fill="#f4f1eb">AUREN</text>
-  <text x="166" y="138" font-family="Arial, sans-serif" font-size="12" letter-spacing="5" fill="#f4f1eb" fill-opacity="0.75">STUDIO</text>
+  ${markSvg('translate(80 84) scale(0.08)')}
+  <rect x="174" y="137" width="22" height="1" fill="#e7d3b5" fill-opacity="0.7"/>
+  <text x="204" y="141" font-family="Arial, sans-serif" font-size="11" letter-spacing="6" fill="#e7d3b5">STUDIO</text>
+  <rect x="290" y="137" width="22" height="1" fill="#e7d3b5" fill-opacity="0.7"/>
   <text x="80" y="300" font-family="Georgia, serif" font-size="62" fill="#ffffff">Tous vos projets,</text>
   <text x="80" y="372" font-family="Georgia, serif" font-size="62" fill="#ffffff">de la première esquisse</text>
   <text x="80" y="444" font-family="Georgia, serif" font-style="italic" font-size="62" fill="#e7d3b5">à la dernière clé.</text>
@@ -28,19 +27,16 @@ const overlay = `
   <text x="136" y="507" font-family="Arial, sans-serif" font-size="20" letter-spacing="3" fill="#e7d3b5">ARCHITECTE À CASABLANCA · aurenstudio.com</text>
 </svg>`;
 
+// Wordmark mask (white + alpha) tinted champagne.
+const word = await sharp('public/brand/wordmark.png')
+  .resize({ width: 138 })
+  .tint('#e7d3b5')
+  .toBuffer();
+
 await sharp('assets-og/og-bg.jpg')
   .resize(W, H, { fit: 'cover', position: 'centre' })
-  .composite([{ input: Buffer.from(overlay) }])
+  .composite([{ input: Buffer.from(overlay) }, { input: word, left: 174, top: 98 }])
   .jpeg({ quality: 84, mozjpeg: true })
   .toFile('public/og.jpg');
 
-const logo = `
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#17150f"/>
-  <g transform="translate(4 7) scale(1.25)" fill="none" stroke-width="2.4">
-    <path d="M7 36 20 4l13 32" stroke="#f4f1eb" stroke-miterlimit="10"/>
-    <path d="M11.4 25.2H38" stroke="#b08a5b"/>
-  </g>
-</svg>`;
-await sharp(Buffer.from(logo)).png({ palette: true }).toFile('public/logo.png');
-console.log('og.jpg + logo.png written');
+console.log('og.jpg written');

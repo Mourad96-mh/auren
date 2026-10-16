@@ -22,7 +22,8 @@ for (const file of readdirSync(SRC).filter((f) => f.endsWith('.jpg'))) {
 }
 
 // assets-src/interieur/*.jpg: the studio's interior-design renders (service page gallery), same treatment.
-for (const [dir, file] of ['projets', 'interieur'].flatMap((d) => readdirSync(`${SRC}/${d}`).filter((f) => f.endsWith('.jpg')).map((f) => [d, f]))) {
+// assets-src/types/*.jpg: the client's project-type tile photos, already framed to the tile, same treatment.
+for (const [dir, file] of ['projets', 'interieur', 'types'].flatMap((d) => readdirSync(`${SRC}/${d}`).filter((f) => f.endsWith('.jpg')).map((f) => [d, f]))) {
   const name = file.replace(/\.jpg$/, '');
   const base = sharp(`${SRC}/${dir}/${file}`).rotate();
   let info;

@@ -46,7 +46,7 @@ export default async function ServicePage({ params }) {
           <h1 className="h1">{s.h1}</h1>
           <p className="lead">{s.lead}</p>
           <div className="page-hero-media">
-            <Img name={s.img} alt={s.imgAlt} sizes="100vw" priority />
+            <Img name={s.img} alt={s.imgAlt} sizes="100vw" priority position={s.imgPos} />
           </div>
         </div>
       </section>

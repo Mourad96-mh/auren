@@ -8,7 +8,7 @@ export const SERVICES = [
     short:
       "Étude de faisabilité, esquisse, avant-projet et plans d'exécution, pour tout type de bâtiment.",
     img: 'conception',
-    imgAlt: 'Façade contemporaine aux ouvertures sculptées, conception architecturale',
+    imgAlt: "Maquette d'une villa contemporaine posée sur des plans d'architecte, conception architecturale",
     metaTitle: 'Architecte villa et immeuble à Casablanca | Auren Studio',
     metaDesc:
       "Conception de villas, immeubles, commerces et bureaux à Casablanca : faisabilité, esquisse, avant-projet, plans d'exécution et 3D par votre architecte.",
@@ -57,7 +57,7 @@ export const SERVICES = [
     short:
       'Préparation des plans à autoriser, dépôt du permis de construire et suivi du dossier jusqu’à l’obtention.',
     img: 'plans',
-    imgAlt: "Architecte traçant des plans à la règle pour un dossier de permis de construire",
+    imgAlt: "Architecte dessinant des plans au stylo pour un dossier de permis de construire",
     metaTitle: 'Architecte permis de construire Casablanca | Auren Studio',
     metaDesc:
       "Plans autorisables, dépôt du permis de construire sur Rokhas et suivi du dossier à Casablanca : votre architecte gère les autorisations jusqu'au permis.",
@@ -106,7 +106,8 @@ export const SERVICES = [
     short:
       'Coordination des entreprises, contrôle de la qualité, respect du budget et des délais, jusqu’à la réception.',
     img: 'chantier',
-    imgAlt: 'Chef de chantier contrôlant les travaux sur un échafaudage',
+    imgPos: 'center 15%', // 5:2 hero: keep the supervisor's helmet in frame
+    imgAlt: 'Chef de chantier en gilet de sécurité contrôlant un immeuble en construction',
     metaTitle: 'Suivi de chantier par un architecte à Casablanca',
     metaDesc:
       "Direction et suivi de chantier à Casablanca : consultation des entreprises, visites, contrôle qualité, budget et délais tenus jusqu'à la réception des travaux.",
@@ -155,7 +156,8 @@ export const SERVICES = [
     title: 'Rénovation, extension et surélévation',
     short: 'Transformation et réhabilitation de tout bâtiment existant, quelle que soit sa taille ou son état.',
     img: 'renovation',
-    imgAlt: 'Appartement rénové, lumineux, aux murs blancs et parquet ancien',
+    imgPos: 'center 0%', // keep the painter's head in frame
+    imgAlt: 'Peintre au travail dans un intérieur en rénovation aux grandes baies vitrées',
     metaTitle: 'Rénovation, extension, surélévation Casablanca',
     metaDesc:
       "Rénovation de villa ou d'appartement, extension et surélévation à Casablanca : diagnostic, plans, autorisations et suivi des travaux par un architecte.",
@@ -262,7 +264,7 @@ export const SERVICES = [
     title: '3D, expertise et conseil',
     short: "Rendus 3D réalistes, diagnostic, avis technique et assistance à l'achat d'un bien.",
     img: 'maquette',
-    imgAlt: 'Maquette de maison et plans sur la table de travail de l’architecte',
+    imgAlt: 'Architecte annotant la maquette d’une villa contemporaine',
     metaTitle: 'Rendus 3D, expertise bâtiment et conseil | Casablanca',
     metaDesc:
       "Rendus 3D réalistes de villas et d'intérieurs, diagnostic de bâtiment, avis technique et assistance à l'achat d'un bien immobilier à Casablanca.",

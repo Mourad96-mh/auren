@@ -42,7 +42,7 @@ export default function StudioPage() {
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container split">
           <div className="media parallax reveal">
-            <Img name="studio" alt="Escaliers sculpturaux en acier corten" sizes="(max-width: 900px) 100vw, 50vw" priority />
+            <Img name="studio" alt="Bureau d’architecte aux tons bois et cuir, baigné de la lumière du soleil couchant" sizes="(max-width: 900px) 100vw, 50vw" priority />
           </div>
           <div className="prose reveal d1">
             <p className="lead">
@@ -117,7 +117,7 @@ export default function StudioPage() {
             </Link>
           </div>
           <div className="media parallax reveal d1">
-            <Img name="studio-2" alt="Salle de réunion lumineuse" sizes="(max-width: 900px) 100vw, 50vw" />
+            <Img name="studio-reunion" alt="Salle de réunion du studio baignée de soleil, grande table en bois et chaises blanches" sizes="(max-width: 900px) 100vw, 50vw" />
           </div>
         </div>
       </section>

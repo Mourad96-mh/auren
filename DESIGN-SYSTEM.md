@@ -56,10 +56,15 @@ Pick sizes from the scale, colours from the palette, gaps from the space tokens.
 `:root`, add it to `/design-system/` and to this file. Do not hard-code a value in a component.
 
 ## Logo
-`src/components/Logo.js`: an "A" drawn as an architectural section (the legs form a gable, the bronze crossbar is a floor
-slab cantilevered past the right leg), a hairline, then the wordmark AUREN / STUDIO in Manrope, tracked. The same mark is
-used in `src/app/icon.svg` (favicon) and in `scripts/make-og.mjs` (og.jpg, logo.png). It is a placeholder until the
-client supplies an official logo; if they do, replace `LogoMark` and rerun `npm run og`.
+Official client logo (received 2026-10-15), source `assets-src/logo/auren-logo-client.jpeg` (a 3D brushed-gold render on
+cream). On the site it is split into three parts so it reads on both the light header and the dark hero / footer:
+- **Mark**: the gold "A" (a triangle with a ribbon sweeping out of it) redrawn as SVG in `src/components/Logo.js`
+  (`LogoMark`, coordinates = pixels of the source). The same drawing is in `scripts/brand-mark.mjs` for the favicon
+  (`src/app/icon.svg`, gold on ink) and og.jpg.
+- **AUREN**: a raster alpha mask (`public/brand/wordmark.png`) coloured in CSS through `--logo-word`: deep bronze
+  `#6a4519` on light backgrounds, `--accent-pale` on the clear header and in the footer.
+- **STUDIO**: HTML text in Manrope between two rules, like the original.
+`public/logo.png` (schema.org) is the original lockup at 512 px. Regenerate with `npm run logo` then `npm run og`.
 
 ## Zones map (home)
 `src/components/ZonesMap.js`: Leaflet + OpenStreetMap tiles, tinted to the palette in CSS (`.zones-map-canvas`). Leaflet is
