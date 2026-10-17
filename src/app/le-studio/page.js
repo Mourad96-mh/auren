@@ -83,7 +83,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="section section-dark" aria-labelledby="method-title">
+      <section id="methode" className="section section-dark" aria-labelledby="method-title">
         <div className="container">
           <div className="section-head">
             <div>

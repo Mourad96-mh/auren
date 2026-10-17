@@ -2,12 +2,11 @@ import Link from 'next/link';
 import HeroVideo from '@/components/HeroVideo';
 import Img from '@/components/Img';
 import Faq from '@/components/Faq';
-import ZonesMap from '@/components/ZonesMap';
 import CtaBand from '@/components/CtaBand';
 import JsonLd from '@/components/JsonLd';
+import GuideLinks from '@/components/GuideLinks';
 import { IconArrow, IconWhatsApp } from '@/components/Icons';
 import { SERVICES } from '@/lib/services';
-import { GUIDES } from '@/lib/guides';
 import { PILLARS, PROCESS, PROJECTS, TYPOLOGIES, HOME_FAQ } from '@/lib/content';
 import { SITE, ZONES, whatsappLink } from '@/lib/site';
 import { heroVideoLd, pageMeta } from '@/lib/seo';
@@ -65,22 +64,22 @@ export default function Home() {
               Un seul architecte pour tous vos projets, <em>quelle que soit leur taille.</em>
             </h2>
             <p className="lead">
-              Auren Studio est un cabinet d’architecture basé à Casablanca. Nous accompagnons particuliers, investisseurs et entreprises
-              de l’étude du terrain à la remise des clés : conception, permis de construire, chantier et aménagement intérieur.
+              Cabinet d’architecture à Casablanca, nous accompagnons particuliers, investisseurs et entreprises de l’étude du terrain à
+              la remise des clés.
             </p>
             <Link className="link-arrow" href="/le-studio/" prefetch={false}>
-              Notre méthode <IconArrow />
+              Découvrir le studio <IconArrow />
             </Link>
           </div>
           <div className="pillars">
             {PILLARS.map((p, i) => (
-              <div key={p.t} className={`pillar reveal d${i + 1}`}>
-                <span className="pillar-num">0{i + 1}</span>
-                <div>
+              <details key={p.t} className={`pillar reveal d${i + 1}`}>
+                <summary>
+                  <span className="pillar-num">0{i + 1}</span>
                   <h3>{p.t}</h3>
-                  <p>{p.d}</p>
-                </div>
-              </div>
+                </summary>
+                <p>{p.d}</p>
+              </details>
             ))}
           </div>
         </div>
@@ -104,10 +103,6 @@ export default function Home() {
               <p className="eyebrow">Nos services</p>
               <h2 id="services-title" className="h2">Six expertises, un même interlocuteur</h2>
             </div>
-            <p>
-              De la conception au permis de construire, du chantier à l’aménagement intérieur : chaque étape de votre projet est prise
-              en charge par le même cabinet.
-            </p>
           </div>
           <div className="services-grid">
             {SERVICES.map((s, i) => (
@@ -137,16 +132,14 @@ export default function Home() {
               <p className="eyebrow">Notre méthode</p>
               <h2 id="process-title" className="h2">De l’esquisse à la clé, en six étapes</h2>
             </div>
-            <p>
-              Une méthode claire, des décisions prises au bon moment et un budget suivi à chaque phase. Vous savez toujours où en est
-              votre projet et ce qui vient ensuite.
-            </p>
+            <Link className="link-arrow" href="/le-studio/#methode" prefetch={false}>
+              Le détail de chaque étape <IconArrow />
+            </Link>
           </div>
-          <ol className="process">
+          <ol className="process process-compact">
             {PROCESS.map((p, i) => (
               <li key={p.k} className={`reveal d${(i % 3) + 1}`}>
                 <h3>{p.k}</h3>
-                <p>{p.d}</p>
               </li>
             ))}
           </ol>
@@ -161,7 +154,6 @@ export default function Home() {
               <p className="eyebrow">Nos projets</p>
               <h2 id="projets-title" className="h2">Derniers projets du studio</h2>
             </div>
-            <p>Deux villas contemporaines et un restaurant-café, de Témara à Dar Bouazza : des projets pensés avec leur site, leur lumière et leurs usages.</p>
           </div>
           <div className="pj-cards">
             {PROJECTS.map((p, i) => (
@@ -191,10 +183,6 @@ export default function Home() {
               <p className="eyebrow">Tout type de projet</p>
               <h2 id="typo-title" className="h2">Du logement à l’équipement, nous concevons et réalisons</h2>
             </div>
-            <p>
-              Construction neuve, rénovation, extension ou surélévation : chaque programme a ses contraintes, ses usages et ses règles.
-              Nous les maîtrisons.
-            </p>
           </div>
           <div className="typo-grid">
             {TYPOLOGIES.map((t, i) => (
@@ -211,40 +199,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- Statement ---------- */}
-      <section className="section-sm section-alt" aria-label="Types de projets">
-        <div className="marquee" aria-hidden="true">
+      {/* ---------- Marquee ---------- */}
+      <div aria-hidden="true">
+        <div className="marquee">
           <div className="marquee-track">
             {[...MARQUEE, ...MARQUEE].map((w, i) => (
               <span key={i}>{w}</span>
             ))}
           </div>
         </div>
-        <div className="container reveal statement-wrap">
-          <p className="statement">
-            « Villas, immeubles, commerces, bureaux, hôtels, riads, équipements… <em>quel que soit votre projet, nous le réalisons.</em> »
-          </p>
-        </div>
-      </section>
-
-      {/* ---------- Zones ---------- */}
-      <section className="section" aria-labelledby="zones-title">
-        <div className="container">
-          <div className="section-head reveal">
-            <div>
-              <p className="eyebrow">Zones d’intervention</p>
-              <h2 id="zones-title" className="h2">Architecte à Casablanca et dans sa région</h2>
-            </div>
-            <p>
-              Basés à Casablanca, nous connaissons les règles d’urbanisme de chaque secteur et les délais des services instructeurs.
-              Nous intervenons dans toute la ville et sa périphérie ; les projets ailleurs au Maroc sont étudiés au cas par cas.
-            </p>
-          </div>
-          <div className="reveal d1">
-            <ZonesMap />
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* ---------- Guides ---------- */}
       <section className="section section-alt" aria-labelledby="guides-title">
@@ -254,26 +218,11 @@ export default function Home() {
               <p className="eyebrow">Guides</p>
               <h2 id="guides-title" className="h2">Bien préparer votre projet</h2>
             </div>
-            <p>Honoraires, permis de construire, budget d’une villa : nos réponses aux questions que l’on nous pose le plus souvent.</p>
+            <Link className="link-arrow" href="/guides/" prefetch={false}>
+              Tous les guides <IconArrow />
+            </Link>
           </div>
-          <div className="guides-grid">
-            {GUIDES.map((g, i) => (
-              <article key={g.slug} className={`guide-card reveal d${i + 1}`}>
-                <div className="media">
-                  <Img name={g.img} alt="" sizes="(max-width: 900px) 100vw, 33vw" />
-                </div>
-                <div className="guide-card-body">
-                  <h3>
-                    <Link href={`/guides/${g.slug}/`} prefetch={false}>{g.title}</Link>
-                  </h3>
-                  <p>{g.excerpt}</p>
-                  <Link className="link-arrow" href={`/guides/${g.slug}/`} prefetch={false} aria-label={`Lire le guide : ${g.nav}`}>
-                    Lire le guide <IconArrow />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+          <GuideLinks />
         </div>
       </section>
 

@@ -3,11 +3,10 @@ import Img from '@/components/Img';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CtaBand from '@/components/CtaBand';
 import Faq from '@/components/Faq';
+import GuideLinks from '@/components/GuideLinks';
 import JsonLd from '@/components/JsonLd';
 import { IconArrow, IconWhatsApp } from '@/components/Icons';
 import { SERVICES } from '@/lib/services';
-import { GUIDES } from '@/lib/guides';
-import { PROCESS } from '@/lib/content';
 import { absUrl, whatsappLink } from '@/lib/site';
 import { pageMeta } from '@/lib/seo';
 
@@ -137,7 +136,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ---------- Two formulas ---------- */}
+      {/* ---------- Two formulas + where to start ---------- */}
       <section className="section section-alt" aria-labelledby="formules-title">
         <div className="container">
           <div className="section-head reveal">
@@ -145,7 +144,6 @@ export default function ServicesPage() {
               <p className="eyebrow">Deux façons de travailler ensemble</p>
               <h2 id="formules-title" className="h2">Tout le projet, <em>ou seulement une étape</em></h2>
             </div>
-            <p>Vous choisissez le niveau d’accompagnement. Dans les deux cas, c’est le même cabinet, la même méthode et la même exigence.</p>
           </div>
           <div className="formulas">
             {FORMULAS.map((f, i) => (
@@ -167,10 +165,31 @@ export default function ServicesPage() {
               </article>
             ))}
           </div>
+
+          <div id="choisir" className="situations-fold reveal">
+            <h3 className="situations-title">Par où commencer ? <em>Trouvez votre situation</em></h3>
+            <div className="folds">
+              {SITUATIONS.map((x) => (
+                <details key={x.t} className="fold">
+                  <summary>{x.t}</summary>
+                  <div className="fold-body">
+                    <p>{x.d}</p>
+                    <ul className="fold-links">
+                      {x.s.map((slug) => (
+                        <li key={slug}>
+                          <Link href={`/services/${slug}/`} prefetch={false}>{bySlug[slug].title}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ---------- One chapter per service ---------- */}
+      {/* ---------- One compact row per service; deliverables and steps fold open ---------- */}
       <section className="section" aria-labelledby="expertises-title">
         <div className="container">
           <div className="section-head reveal">
@@ -178,45 +197,44 @@ export default function ServicesPage() {
               <p className="eyebrow">Six expertises</p>
               <h2 id="expertises-title" className="h2">Ce que nous faisons, <em>en détail</em></h2>
             </div>
-            <p>Pour chaque service : ce qu’il couvre, les étapes et les documents que vous recevez. Chaque fiche renvoie vers sa page complète.</p>
           </div>
 
-          <div className="svc-chapters">
-            {SERVICES.map((s, i) => (
-              <article key={s.slug} id={s.slug} className={`svc-chapter ${i % 2 ? 'is-flip' : ''}`}>
-                <div className="svc-chapter-media reveal">
-                  <Link href={`/services/${s.slug}/`} prefetch={false} tabIndex={-1} aria-hidden="true" className="media">
-                    <Img name={s.img} alt="" sizes="(max-width: 960px) 100vw, 42vw" />
-                  </Link>
-                  <span className="svc-chapter-num" aria-hidden="true">{s.num}</span>
-                </div>
-                <div className="svc-chapter-body reveal d1">
-                  <p className="eyebrow">Service {s.num}</p>
-                  <h3 className="svc-chapter-title">
+          <div className="svc-rows">
+            {SERVICES.map((s) => (
+              <article key={s.slug} id={s.slug} className="svc-row reveal">
+                <Link href={`/services/${s.slug}/`} prefetch={false} tabIndex={-1} aria-hidden="true" className="media">
+                  <Img name={s.img} alt="" sizes="(max-width: 700px) 100vw, 280px" />
+                </Link>
+                <div className="svc-row-body">
+                  <p className="svc-row-num">{s.num}</p>
+                  <h3 className="svc-row-title">
                     <Link href={`/services/${s.slug}/`} prefetch={false}>{s.title}</Link>
                   </h3>
-                  <p className="svc-chapter-lead">{s.lead}</p>
-                  <div className="svc-chapter-cols">
-                    <div>
-                      <h4>Ce que vous recevez</h4>
-                      <ul className="checks">
-                        {s.deliverables.map((d) => (
-                          <li key={d}>{d}</li>
-                        ))}
-                      </ul>
+                  <p className="svc-row-lead">{s.lead}</p>
+                  <details className="fold fold-inline">
+                    <summary>Ce que vous recevez et les étapes</summary>
+                    <div className="svc-chapter-cols">
+                      <div>
+                        <h4>Ce que vous recevez</h4>
+                        <ul className="checks">
+                          {s.deliverables.map((d) => (
+                            <li key={d}>{d}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4>Les étapes</h4>
+                        <ol className="mini-steps">
+                          {s.steps.map((st) => (
+                            <li key={st.t}>
+                              <b>{st.t}</b>
+                              <span>{st.d}</span>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
                     </div>
-                    <div>
-                      <h4>Les étapes</h4>
-                      <ol className="mini-steps">
-                        {s.steps.map((st) => (
-                          <li key={st.t}>
-                            <b>{st.t}</b>
-                            <span>{st.d}</span>
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-                  </div>
+                  </details>
                   <div className="svc-chapter-actions">
                     <Link className="link-arrow" href={`/services/${s.slug}/`} prefetch={false} aria-label={`Tout savoir : ${s.title}`}>
                       Tout savoir sur ce service <IconArrow />
@@ -229,56 +247,10 @@ export default function ServicesPage() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ---------- Where to start ---------- */}
-      <section id="choisir" className="section section-alt" aria-labelledby="choisir-title">
-        <div className="container">
-          <div className="section-head reveal">
-            <div>
-              <p className="eyebrow">Par où commencer ?</p>
-              <h2 id="choisir-title" className="h2">Partez de votre situation</h2>
-            </div>
-            <p>Vous ne savez pas quel service demander ? Trouvez votre cas : nous vous indiquons les expertises utiles, dans l’ordre.</p>
-          </div>
-          <div className="situations">
-            {SITUATIONS.map((x, i) => (
-              <article key={x.t} className={`situation reveal d${(i % 3) + 1}`}>
-                <span className="situation-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                <h3>{x.t}</h3>
-                <p>{x.d}</p>
-                <ul>
-                  {x.s.map((slug) => (
-                    <li key={slug}>
-                      <Link href={`/services/${slug}/`} prefetch={false}>{bySlug[slug].title}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- Method ---------- */}
-      <section className="section section-dark" aria-labelledby="methode-title">
-        <div className="container">
-          <div className="section-head reveal">
-            <div>
-              <p className="eyebrow">Notre méthode</p>
-              <h2 id="methode-title" className="h2">Quelle que soit la mission, <em>la même rigueur</em></h2>
-            </div>
-            <p>Chaque phase se termine par une validation commune : rien n’avance sans votre accord, rien n’est découvert trop tard.</p>
-          </div>
-          <ol className="process">
-            {PROCESS.map((p, i) => (
-              <li key={p.k} className={`reveal d${(i % 3) + 1}`}>
-                <h3>{p.k}</h3>
-                <p>{p.d}</p>
-              </li>
-            ))}
-          </ol>
+          <p className="svc-method-note">
+            Quelle que soit la mission, chaque phase se termine par une validation commune.{' '}
+            <Link href="/le-studio/#methode" prefetch={false}>Notre méthode en six étapes</Link>
+          </p>
         </div>
       </section>
 
@@ -292,26 +264,11 @@ export default function ServicesPage() {
               <p className="eyebrow">Avant de vous lancer</p>
               <h2 id="guides-title" className="h2">Nos guides pour bien préparer votre projet</h2>
             </div>
-            <p>Honoraires, permis de construire, budget d’une villa : des repères concrets, à lire avant le premier rendez-vous.</p>
+            <Link className="link-arrow" href="/guides/" prefetch={false}>
+              Tous les guides <IconArrow />
+            </Link>
           </div>
-          <div className="guides-grid">
-            {GUIDES.map((g, i) => (
-              <article key={g.slug} className={`guide-card reveal d${i + 1}`}>
-                <div className="media">
-                  <Img name={g.img} alt="" sizes="(max-width: 900px) 100vw, 33vw" />
-                </div>
-                <div className="guide-card-body">
-                  <h3>
-                    <Link href={`/guides/${g.slug}/`} prefetch={false}>{g.title}</Link>
-                  </h3>
-                  <p>{g.excerpt}</p>
-                  <Link className="link-arrow" href={`/guides/${g.slug}/`} prefetch={false} aria-label={`Lire le guide : ${g.nav}`}>
-                    Lire le guide <IconArrow />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+          <GuideLinks />
         </div>
       </section>
 
