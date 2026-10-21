@@ -188,28 +188,24 @@ button { font: inherit; cursor: pointer; }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); }
 .header-logo { display: inline-flex; }
 
-/* Logo (client's official logo): gold SVG mark + AUREN wordmark (raster mask, coloured here)
-   + STUDIO between two rules. The only sizes outside the scale (a logotype, not text). */
-.logo { --logo-word: #6a4519; display: inline-flex; align-items: center; gap: 12px; color: var(--logo-word); }
-.site-header.is-clear .logo, .logo-light { --logo-word: var(--accent-pale); }
-.logo-mark { flex: none; width: 50px; height: 36px; }
-.logo-text { display: flex; flex-direction: column; align-items: center; gap: 6px; line-height: 1; }
+/* Logo (client's official logo): "SA" monogram + AUREN STUDIO, traced SVGs painted through masks.
+   Brand gold (#c7ab87) on dark grounds and photos; a darker bronze on the cream header, where the
+   light gold would wash out. The only sizes outside the scale (a logotype, not text). */
+.logo { --logo-color: var(--accent-ink); display: inline-flex; align-items: center; gap: 12px; color: var(--logo-color); }
+.site-header.is-clear .logo, .logo-light { --logo-color: #c7ab87; }
+.logo-mark, .logo-name { flex: none; display: block; background: currentColor; }
+.logo-mark {
+  height: 38px; aspect-ratio: 481 / 605;
+  -webkit-mask: url(/brand/mark.svg) center / contain no-repeat; mask: url(/brand/mark.svg) center / contain no-repeat;
+}
 .logo-name {
-  display: block; width: 104px; aspect-ratio: 640 / 115; background: currentColor;
-  -webkit-mask: url(/brand/wordmark.png) center / contain no-repeat; mask: url(/brand/wordmark.png) center / contain no-repeat;
+  width: 122px; aspect-ratio: 686 / 54;
+  -webkit-mask: url(/brand/name.svg) center / contain no-repeat; mask: url(/brand/name.svg) center / contain no-repeat;
 }
-.logo-sub {
-  display: flex; align-items: center; gap: 7px;
-  font-family: var(--font-sans-stack); font-size: 0.5625rem; font-weight: 500; letter-spacing: 0.42em; margin-right: -0.42em; text-transform: uppercase;
-}
-.logo-sub::before, .logo-sub::after { content: ''; width: 12px; height: 1px; background: currentColor; opacity: 0.6; }
-.logo-sub::after { margin-left: -0.42em; }
 @media (min-width: 768px) {
   .logo { gap: 14px; }
-  .logo-mark { width: 60px; height: 44px; }
-  .logo-name { width: 126px; }
-  .logo-sub { font-size: 0.625rem; gap: 9px; }
-  .logo-sub::before, .logo-sub::after { width: 16px; }
+  .logo-mark { height: 46px; }
+  .logo-name { width: 150px; }
 }
 
 .main-nav { display: flex; align-items: center; gap: 34px; }
@@ -706,6 +702,17 @@ button { font: inherit; cursor: pointer; }
 .sources ul { padding-left: 1.2em; }
 .callout { background: var(--surface); border-left: 2px solid var(--accent); padding: 24px 28px; margin: 36px 0; }
 .callout p:last-child { margin: 0; }
+/* service page: "Lire la suite" fold under the first paragraph */
+.fold-more { margin-bottom: var(--space-md); }
+.fold-more > p { padding-right: 40px; }
+/* guide chapters as accordions */
+.guide-folds { margin-top: var(--space-lg); }
+.fold-section summary { padding: 20px 40px 20px 0; }
+.fold-section summary h2 { margin: 0; font-size: var(--fs-xl); line-height: var(--lh-snug); color: inherit; }
+.fold-section > :not(summary) { padding-right: 40px; }
+.fold-section > :last-child { margin-bottom: var(--space-md); }
+.sources summary { cursor: pointer; font-weight: var(--fw-semibold); color: var(--ink); padding: 4px 0; }
+.sources[open] summary { margin-bottom: 10px; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--grain), var(--dark-2); background-size: 160px, auto; color: var(--on-dark-2); padding-top: clamp(64px, 8vw, 100px); font-size: var(--fs-sm); overflow: hidden; }
