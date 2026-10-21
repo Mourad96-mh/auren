@@ -4,14 +4,14 @@
 export const SITE = {
   name: 'Auren Studio',
   legalName: 'Auren Studio', // TODO: raison sociale exacte
-  url: 'https://www.aurenstudio.com', // TODO: confirmer le domaine
+  url: 'https://aurenstudio.ma',
   tagline: 'Tous vos projets, de la première esquisse à la dernière clé.',
   description:
     "Auren Studio, cabinet d'architecture à Casablanca : conception, plans et permis de construire, suivi de chantier, rénovation, surélévation et architecture d'intérieur.",
   phone: '+212 6 51 90 62 18',
   phoneHref: 'tel:+212651906218',
   whatsapp: '212651906218',
-  email: 'contact@aurenstudio.com',
+  email: 'contact@aurenstudio.ma',
   city: 'Casablanca',
   region: 'Casablanca-Settat',
   country: 'MA',

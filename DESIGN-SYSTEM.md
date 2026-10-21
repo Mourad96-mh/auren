@@ -59,8 +59,9 @@ Pick sizes from the scale, colours from the palette, gaps from the space tokens.
 Official client logo (received 2026-10-15), source `assets-src/logo/auren-logo-client.jpeg` (a 3D brushed-gold render on
 cream). On the site it is split into three parts so it reads on both the light header and the dark hero / footer:
 - **Mark**: the gold "A" (a triangle with a ribbon sweeping out of it) redrawn as SVG in `src/components/Logo.js`
-  (`LogoMark`, coordinates = pixels of the source). The same drawing is in `scripts/brand-mark.mjs` for the favicon
-  (`src/app/icon.svg`, gold on ink) and og.jpg.
+  (`LogoMark`, coordinates = pixels of the source). The same drawing is in `scripts/brand-mark.mjs` for og.jpg.
+  The favicon / browser icons (`src/app/favicon.ico`, `icon.png`, `apple-icon.png`) are the client's real render of
+  the mark, cropped by `scripts/make-logo.mjs`.
 - **AUREN**: a raster alpha mask (`public/brand/wordmark.png`) coloured in CSS through `--logo-word`: deep bronze
   `#6a4519` on light backgrounds, `--accent-pale` on the clear header and in the footer.
 - **STUDIO**: HTML text in Manrope between two rules, like the original.

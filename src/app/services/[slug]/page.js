@@ -54,13 +54,18 @@ export default async function ServicePage({ params }) {
       <section className="section" style={{ paddingTop: 20 }}>
         <div className="container detail-grid">
           <div className="prose">
-            {s.body.map((p) => (
-              <p key={p.slice(0, 24)}>{p}</p>
-            ))}
-            <p>
-              Nous intervenons à Casablanca ({ZONES.casablanca.slice(0, 6).join(', ')}…) et dans sa périphérie :{' '}
-              {ZONES.peripherie.slice(0, 4).join(', ')}.
-            </p>
+            <p>{s.body[0]}</p>
+            {/* the rest stays in the HTML (indexed), folded so the page reads short */}
+            <details className="fold fold-inline fold-more">
+              <summary>Lire la suite</summary>
+              {s.body.slice(1).map((p) => (
+                <p key={p.slice(0, 24)}>{p}</p>
+              ))}
+              <p>
+                Nous intervenons à Casablanca ({ZONES.casablanca.slice(0, 6).join(', ')}…) et dans sa périphérie :{' '}
+                {ZONES.peripherie.slice(0, 4).join(', ')}.
+              </p>
+            </details>
             {guide && (
               <div className="callout">
                 <p>
@@ -104,7 +109,7 @@ export default async function ServicePage({ params }) {
         </section>
       )}
 
-      <section className="section section-alt" aria-labelledby="steps-title">
+      <section className="section-sm section-alt" aria-labelledby="steps-title">
         <div className="container">
           <p className="eyebrow">Déroulement</p>
           <h2 id="steps-title" className="h2" style={{ marginBottom: 40 }}>

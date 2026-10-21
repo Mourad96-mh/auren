@@ -25,6 +25,7 @@ export const metadata = {
   }),
   applicationName: SITE.name,
   formatDetection: { telephone: false },
+  verification: { google: 'jxTHuLN10V5inJPRUDJivz3PfSvsCfFhwloYAVgODJ8' }, // Search Console, aurenstudio.ma
 };
 
 export const viewport = {

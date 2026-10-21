@@ -58,21 +58,26 @@ export default async function GuidePage({ params }) {
         <div className="container">
           <article className="article prose">
             <p className="lead">{g.excerpt}</p>
-            {g.sections.map((sec) => (
-              <section key={sec.h}>
-                <h2>{sec.h}</h2>
-                {sec.p?.map((p) => (
-                  <p key={p.slice(0, 30)}>{p}</p>
-                ))}
-                {sec.list && (
-                  <ul>
-                    {sec.list.map((li) => (
-                      <li key={li}>{li}</li>
-                    ))}
-                  </ul>
-                )}
-              </section>
-            ))}
+            {/* one accordion per chapter: the headings read as a table of contents, the text stays in the HTML */}
+            <div className="folds guide-folds">
+              {g.sections.map((sec, i) => (
+                <details key={sec.h} className="fold fold-section" open={i === 0}>
+                  <summary>
+                    <h2>{sec.h}</h2>
+                  </summary>
+                  {sec.p?.map((p) => (
+                    <p key={p.slice(0, 30)}>{p}</p>
+                  ))}
+                  {sec.list && (
+                    <ul>
+                      {sec.list.map((li) => (
+                        <li key={li}>{li}</li>
+                      ))}
+                    </ul>
+                  )}
+                </details>
+              ))}
+            </div>
 
             <div className="callout">
               <p>
@@ -83,8 +88,8 @@ export default async function GuidePage({ params }) {
             </div>
 
             {g.sources && (
-              <div className="sources">
-                <p>Sources et lectures complémentaires :</p>
+              <details className="sources">
+                <summary>Sources et lectures complémentaires</summary>
                 <ul>
                   {g.sources.map((s) => (
                     <li key={s.u}>
@@ -93,7 +98,7 @@ export default async function GuidePage({ params }) {
                   ))}
                 </ul>
                 <p>Les informations de ce guide sont générales et ne remplacent pas l’étude de votre dossier.</p>
-              </div>
+              </details>
             )}
           </article>
         </div>
